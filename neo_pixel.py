@@ -5,24 +5,22 @@ from adafruit_led_animation.animation.blink import Blink
 from adafruit_led_animation.sequence import AnimationSequence
 from adafruit_led_animation.color import RED, GREEN, BLACK
 
-num_pixels = 5
-pixels = neopixel.NeoPixel(board.GP0, num_pixels, brightness=0.1)
+NUM_PIXELS = 5
+pixels = neopixel.NeoPixel(board.GP0, NUM_PIXELS, brightness=0.1)
 
 def pixel_fill(colour, size):
     index = 0
     while index < size:
         pixels[index] = colour
         index += 1
-    while index < 5:
+    while index < NUM_PIXELS:
         pixels[index] = BLACK
         index += 1
 
 def display_health(colour, level, delay=0.0):
-    print("display_health(): " + str(colour) + " " + level + " " + delay)
-#   print("display_health(): {0} {1} {2}".format(colour, level, delay))
+    print("display_health(): {0} {1} {2}".format(colour, level, delay))
     pixels.brightness = 0.5
-    pixels.fill(colour)
-#   pixel_fill(colour, level)
+    pixel_fill(colour, level)
     time.sleep(delay)
 
 """
